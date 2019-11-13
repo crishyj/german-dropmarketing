@@ -452,12 +452,6 @@
                 scrollTop: $(".home_top1_text3").offset().top
               }, 7000);
             }
-
-            // if($('#option_modal .option_text').text() != ""){
-            //     $('#option_modal').modal('show')
-            // }
-            
-
         })
     </script>
 

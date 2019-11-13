@@ -8,6 +8,11 @@ use App\Models\Adword;
 use App\Models\Advertise;
 use App\Mail\CustomerVerify;
 use Illuminate\Support\Facades\Mail;
+use App\Events\JobPost;
+use App\Models\Notification;
+
+
+
 class CustomerController extends Controller
 {
     public function index(Request $request){
@@ -15,10 +20,11 @@ class CustomerController extends Controller
         $mode = $request->input('mode');
         if($mode =='short'){
             return redirect(route('oneform.index'));
-        }
+        }        
         $option = $request->input('option');            
         $customer = Customer::all();    
-        $adword = Adword::first();    
+        $adword = Adword::first();  
+       
         $options = Advertise::where('id', $option)->get();      
         return view('index', compact('customer', 'adword', 'options'));
         
@@ -154,9 +160,17 @@ class CustomerController extends Controller
         mail($to,$subject,$message,$headers);
         
         mail($request->get('email'),"Here is your verification code",$verify);
-        return response()->json('success');   
-       
+        
+        Notification::create([
+          'type' => 'post_create',
+          'content' => $name.' posted new project.',
+          'path' => '/dashboard',
+          'status' => '1',
+          'oneform' =>'0',
+        ]);
 
+        event(new JobPost($name));
+        return response()->json('success');         
     }
 
     public function customerVerify(){
@@ -297,7 +311,14 @@ class CustomerController extends Controller
       mail($to,$subject,$message,$headers);
       
       mail($request->get('email'),"Here is your verification code",$verify);
-    
+      Notification::create([
+        'type' => 'post_create',
+        'content' => $name.' posted new project on Oneform.',
+        'path' => '/dashboard/oneform',
+        'status' => '1',
+        'oneform' =>'1',
+      ]);
+      event(new JobPost($name));
       return response()->json('success');   
     }
  

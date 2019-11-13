@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Notification;
 
 class DashboardController extends Controller
 {
@@ -16,7 +17,8 @@ class DashboardController extends Controller
     {
         config(['site.page' => 'dashboard']);
         $customer = Customer::where('oneform', 0)->get();
-        return view('dashboard.admin', compact('customer'));
+        $notificatons = Notification::where('oneform', '0')->get();
+        return view('dashboard.admin', compact('customer', 'notificatons'));
     }
 
     public function index(){
@@ -26,6 +28,7 @@ class DashboardController extends Controller
     public function oneform(){
         config(['site.page' => 'oneform']);
         $customer = Customer::where('oneform', 1)->get();
-        return view('dashboard.oneform', compact('customer'));
+        $notificatons = Notification::where('oneform', 1)->get();
+        return view('dashboard.oneform', compact('customer', 'notificatons'));
     }
 }

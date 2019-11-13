@@ -106,10 +106,10 @@
                         <button class="btn btn-success md-close">Close</button>
                 </div>
             </div>
-        </div>   
-       
+        </div>        
                     
-    </div>
+    </div>              
+ 
     
 @endsection
 
@@ -126,8 +126,11 @@
             $.get("/customer/" + customId, function( data ) {               
                 $(".n-modal-body").html(data);
             });         
-        })
+        })      
+       
     })
 </script>
+
+
 
 @endsection

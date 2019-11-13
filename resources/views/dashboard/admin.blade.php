@@ -95,23 +95,22 @@
         </div> 
        
         <div class="md-modal md-effect-1" id="modal-1">
-            <div class="md-content">
-                    
-                <h4 class="font-weight-600 mb-0">Project Detail</h4>
-               
-                <div class="n-modal-body">
-                 
-
+            <div class="md-content">                    
+                <h4 class="font-weight-600 mb-0">Project Detail</h4>               
+                <div class="n-modal-body">               
                     
                 </div>
                 <div class="modal-footer">
                         <button class="btn btn-success md-close">Close</button>
                 </div>
             </div>
-        </div>   
-       
+        </div>         
+
+      
+      
                     
     </div>
+    
     
 @endsection
 

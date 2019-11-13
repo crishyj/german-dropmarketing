@@ -7845,7 +7845,47 @@ pre .arg {
 #customer_table {
     width: 100% !important;
 }
-.pagination{
-    float:right;
+
+.pagination {
+    float: right;
 }
+
+.dropdown-notifications .dropdown-footer {
+    background-color: transparent;
+}
+
+.dropdown-notification {
+    width: 100%;
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none;
+    display: contents !important;
+}
+
+.notification {
+    background: transparent !important;
+    border: none !important;
+}
+
+.notification_user img {
+    border-radius: 50%;
+}
+
+.dropdown-notifications {
+    font-size: 23px !important;
+    color: #494c57 !important;
+    padding: 7px !important;
+    line-height: 1 !important;
+    background-color: #fff !important;
+    height: 40px !important;
+    width: 40px !important;
+    text-align: center !important;
+    margin: 0 4px !important;
+    display: block !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 35px 0 rgba(80, 80, 80, .15) !important;
+}
+
+.notification-icon {
+    margin-right: 0;
 }

@@ -13,6 +13,9 @@
     <link href="{{ asset('dash_asset/plugins/themify-icons/themify-icons.min.css')}}" rel="stylesheet">  
     <link href="{{ asset('dash_asset/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{ asset('dash_asset/plugins/modals/component.css')}}" rel="stylesheet">
+    <link href="{{ asset('dash_asset/dist/css/bootstrap-notifications.min.css')}}" rel="stylesheet">
+    <script src="{{ asset('dash_asset/plugins/jQuery/jquery-3.4.1.min.js')}}"></script>
+
 
     <!--Start Your Custom Style Now-->
     <link href="{{ asset('dash_asset/dist/css/style.css')}}" rel="stylesheet">
@@ -47,8 +50,9 @@
             </div>
             <div class="overlay"></div>
     </div>
-    <script src="{{ asset('dash_asset/plugins/jQuery/jquery-3.4.1.min.js')}}"></script>
+
     <script src="{{ asset('dash_asset/dist/js/popper.min.js')}}"></script>
+    <script src="{{ asset('dash_asset/dist/js/pusher.min.js')}}"></script>
     <script src="{{ asset('dash_asset/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('dash_asset/plugins/metisMenu/metisMenu.min.js')}}"></script>
     <script src="{{ asset('dash_asset/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>   
@@ -65,7 +69,8 @@
     <!--Page Scripts(used by all page)-->
     <script src="{{ asset('dash_asset/dist/js/sidebar.js')}}"></script>
 	
-
+    <script src="{{ asset('dash_asset/dist/js/notification.js')}}"></script>
     @yield('after_script')
+
 </body>
 </html>

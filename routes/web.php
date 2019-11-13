@@ -57,5 +57,7 @@ Route::get('/dashboard/oneform/{id}', 'CustomerController@oneform_delete')->name
 
 Route::get('/createoption', 'AdvertiseController@oneform_api')->name('dashboard.oneform.api');
 
+Route::get('/dashboard/{id}', 'NotificationController@viewCheck')->name('notification.read');
+
 
 

@@ -37,47 +37,48 @@
                         </div>
                     </div>
                 </li>
-               
-                {{-- <li class="nav-item dropdown notification">
-                    <a class="nav-link dropdown-toggle badge-dot" href="#" data-toggle="dropdown">
-                        <i class="typcn typcn-bell"></i>
+
+                @php
+                    $notifications = \APP\Models\Notification::whereStatus(1)->orderBy('created_at', 'desc')->get();
+                    $noti_count = $notifications->count()                                   ;
+                @endphp
+                <li class="nav-item dropdown dropdown-notifications notification">
+                    <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
+                      <i data-count="{{$noti_count}}" class="typcn typcn-bell notification-icon"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <h6 class="notification-title">Notifications</h6>
-                        <p class="notification-text">You have 2 unread notification</p>
+                        <h6 class="notification-title">Notifications </h6>
+                        <p class="notification-text">You have (<span class="notif-count">{{$noti_count}}</span>) unread notification</p>                      
                         <div class="notification-list">
-                            <div class="media new">
-                                <div class="img-user"><img src="{{ asset('dash_asset/dist/img/avatar.png')}}" alt=""></div>
-                                <div class="media-body">
-                                    <h6>Congratulate <strong>Socrates Itumay</strong> for work anniversaries</h6>
-                                    <span>Mar 15 12:32pm</span>
-                                </div>
-                            </div>
-                            <div class="media new">
-                                <div class="img-user online"><img src="{{ asset('dash_asset/dist/img/avatar2.png')}}" alt=""></div>
-                                <div class="media-body">
-                                    <h6><strong>Joyce Chua</strong> just created a new blog post</h6>
-                                    <span>Mar 13 04:16am</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="img-user"><img src="{{ asset('dash_asset/dist/img/avatar3.png')}}" alt=""></div>
-                                <div class="media-body">
-                                    <h6><strong>Althea Cabardo</strong> just created a new blog post</h6>
-                                    <span>Mar 13 02:56am</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="img-user"><img src="{{ asset('dash_asset/dist/img/avatar4.png')}}" alt=""></div>
-                                <div class="media-body">
-                                    <h6><strong>Adrian Monino</strong> added new comment on your photo</h6>
-                                    <span>Mar 12 10:40pm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-footer"><a href="#">View All Notifications</a></div>
+                            <ul class="dropdown-menu dropdown-notification">
+                                
+                                @foreach ($notifications as $notification)
+                                <a href="{{route('notification.read', $notification->id)}}">
+                                    <li class="notification active">
+                                        <div class="media">
+                                        <div class="media-left">
+                                            <div class="notification_user">
+                                            <img src="../dash_asset/dist/img/avatar5.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <strong class="notification-title">{{$notification->content}}</strong>                                           
+                                            <div class="notification-meta mt-2">
+                                                <small class="timestamp">Creatd time: {{$notification->created_at}}  </small>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </li>
+                                </a>
+                                @endforeach
+
+
+                            </ul>
+                            <div class="dropdown-footer"><a href="#">View All Notifications</a></div>
+                        </div>                       
                     </div>
-                </li> --}}
+                </li>
+
                 <li class="nav-item dropdown user-menu">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                        
@@ -116,3 +117,9 @@
             </div>
         </div>
     </nav>
+    <script type="text/javascript">
+
+    </script>
+
+
+    
