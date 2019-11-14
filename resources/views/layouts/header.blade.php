@@ -40,8 +40,9 @@
 
                 @php
                     $notifications = \APP\Models\Notification::whereStatus(1)->orderBy('created_at', 'desc')->get();
-                    $noti_count = $notifications->count()                                   ;
+                    $noti_count = $notifications->count();                    
                 @endphp
+
                 <li class="nav-item dropdown dropdown-notifications notification">
                     <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
                       <i data-count="{{$noti_count}}" class="typcn typcn-bell notification-icon"></i>
@@ -54,6 +55,20 @@
                                 
                                 @foreach ($notifications as $notification)
                                 <a href="{{route('notification.read', $notification->id)}}">
+                                    @php
+                                        $posted_time = new DateTime($notification->created_at);
+                                        $now = new DateTime();
+                                        $interval = $posted_time->diff($now);
+                                        if($interval->d >= 1){
+                                            $time = $interval->d. " days";
+                                        }else if($interval->h >= 1){
+                                            $time = $interval->h. " hours";
+                                        }else if($interval->i >= 1){
+                                            $time = $interval->i. " mins";
+                                        }else{
+                                            $time = "Just now";
+                                        }                                       
+                                    @endphp 
                                     <li class="notification active">
                                         <div class="media">
                                         <div class="media-left">
@@ -64,7 +79,7 @@
                                         <div class="media-body">
                                             <strong class="notification-title">{{$notification->content}}</strong>                                           
                                             <div class="notification-meta mt-2">
-                                                <small class="timestamp">Creatd time: {{$notification->created_at}}  </small>
+                                                <small class="timestamp">Creatd time: {{$time}}  </small>
                                             </div>
                                         </div>
                                         </div>
