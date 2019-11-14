@@ -34,7 +34,7 @@ channel.bind('App\\Events\\JobPost', function(data) {
                 <strong class="notification-title">` + data.message + `</strong>
                 <!--p class="notification-desc">Extra description can go here</p-->
                 <div class="notification-meta">
-                  <small class="timestamp">about a minute ago</small>
+                  <small class="timestamp">about a minute ago.</small>
                 </div>
               </div>
             </div>

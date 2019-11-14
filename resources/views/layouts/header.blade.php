@@ -39,7 +39,7 @@
                 </li>
 
                 @php
-                    $notifications = \APP\Models\Notification::whereStatus(1)->orderBy('created_at', 'desc')->get();
+                    $notifications = \App\Models\Notification::whereStatus(1)->orderBy('created_at', 'desc')->get();
                     $noti_count = $notifications->count();                    
                 @endphp
 
@@ -63,10 +63,10 @@
                                             $time = $interval->d. " days";
                                         }else if($interval->h >= 1){
                                             $time = $interval->h. " hours";
-                                        }else if($interval->i >= 1){
+                                        }else if($interval->i >= 2){
                                             $time = $interval->i. " mins";
                                         }else{
-                                            $time = "Just now";
+                                            $time = "a minute";
                                         }                                       
                                     @endphp 
                                     <li class="notification active">
@@ -79,7 +79,7 @@
                                         <div class="media-body">
                                             <strong class="notification-title">{{$notification->content}}</strong>                                           
                                             <div class="notification-meta mt-2">
-                                                <small class="timestamp">Creatd time: {{$time}}  </small>
+                                                <small class="timestamp">Project posted about {{$time}} ago. </small>
                                             </div>
                                         </div>
                                         </div>
